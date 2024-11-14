@@ -26,7 +26,7 @@ body {
   justify-content: center;
   align-items: center;
 }
-.loader{
+.loader {
   width: 100%;
   height: 100%;
   display: flex;
@@ -35,11 +35,11 @@ body {
   color: var(--deep-purple);
 }
 /* ========= Home ========== */
-.main{
+.main {
   width: 100%;
   display: flex;
- justify-content: center;
- align-items: center;
+  justify-content: center;
+  align-items: center;
 }
 .home {
   width: 100%;
@@ -47,7 +47,6 @@ body {
   grid-template-columns: 1fr 2fr;
   gap: 1.2rem;
   padding: 1.2rem;
-  background-color: var(--light-purple);
 }
 /* form and table */
 .formSection,
@@ -73,7 +72,7 @@ body {
 .form .form-group {
   display: flex;
   flex-direction: column;
-    margin-bottom: 16px;
+  margin-bottom: 16px;
 }
 
 .form label {
@@ -151,7 +150,7 @@ body {
 .remove-btn {
   background-color: crimson;
 }
-.block-btn{
+.block-btn {
   background-color: yellowgreen;
 }
 .noEmployees {
@@ -160,20 +159,6 @@ body {
   text-align: center;
   margin-top: 20px;
 }
-@media screen and (max-width: 900px) {
-  .container {
-    height: auto;
-  }
-  .home {
-    grid-template-columns: 1fr;
-  }
-}
-@media screen and (max-width: 450px) {
-  .table {
-    width: 450px;
-  }
-}
-
 
 
 /* Employee Details */
@@ -186,7 +171,6 @@ body {
   width: 100%;
   max-width: 400px;
   text-align: center;
-
 }
 
 .employee-name {
@@ -227,7 +211,7 @@ body {
 .employee-info input:disabled {
   background-color: #f0f0f0;
 }
-.back-button-container{
+.back-button-container {
   display: flex;
   justify-content: flex-start;
 }
@@ -241,4 +225,20 @@ body {
 
   cursor: pointer;
   margin-bottom: 20px;
+}
+@media screen and (max-width: 900px) {
+  .container {
+    height: auto;
+  }
+  .home {
+    grid-template-columns: 1fr;
+  }
+  .employee-details-card {
+  margin-top: 20px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .table {
+    width: 450px;
+  }
 }
