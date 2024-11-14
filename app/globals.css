@@ -2,8 +2,7 @@
   --light-purple: #c8bdf7;
   --deep-purple: #5e35b1;
   --white: #fff;
-  --black:#000;
-  
+  --black: #000;
 }
 * {
   margin: 0;
@@ -26,38 +25,53 @@ body {
   justify-content: center;
   align-items: center;
 }
-
+.loader{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 /* ========= Home ========== */
-
+.main{
+  width: 100%;
+  display: flex;
+ justify-content: center;
+ align-items: center;
+}
 .home {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 2fr;
-  gap: 20px;
-  padding: 20px;
+  gap: 1.2rem;
+  padding: 1.2rem;
   background-color: var(--light-purple);
-
 }
-
+/* form and table */
 .formSection,
 .tableSection {
   background: var(--white);
-  padding: 24px;
-  border-radius: 8px;
+  padding: 1.3rem;
+  border-radius: 0.5rem;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-  border: 1px solid var(--light-purple); 
+  border: 1px solid var(--light-purple);
 }
 
 .formSection h2,
 .tableSection h2 {
   margin-bottom: 20px;
   font-size: 1.6em;
-  color: var(--deep-purple)
+  color: var(--deep-purple);
 }
 
 .form {
   display: flex;
   flex-direction: column;
+}
+.form .form-group {
+  display: flex;
+  flex-direction: column;
+    margin-bottom: 16px;
 }
 
 .form label {
@@ -68,8 +82,7 @@ body {
 }
 
 .form input {
-  padding: 10px;
-  margin-bottom: 16px;
+  padding: 0.7rem;
   border: 1px solid var(--light-purple);
   border-radius: 4px;
   outline: none;
@@ -81,7 +94,7 @@ body {
 }
 
 .submitButton {
-  padding: 12px;
+  padding: 0.8rem;
   background-color: var(--deep-purple);
   color: var(--white);
   font-weight: 600;
@@ -90,12 +103,11 @@ body {
   cursor: pointer;
 }
 
-
-
+/* table section */
 .tableSection {
   display: flex;
   flex-direction: column;
-  height: 400px;
+  height: 500px;
   overflow: auto;
 }
 .table {
@@ -107,19 +119,19 @@ body {
 
 .table th,
 .table td {
-  padding: 12px;
+  padding: 0.8rem;
   border: 1px solid var(--light-purple);
   text-align: left;
 }
 
 .table th {
-  background-color: var(--light-purple); 
-  color: var(--deep-purple); 
+  background-color: var(--light-purple);
+  color: var(--deep-purple);
   font-weight: 600;
 }
 
 .table tr:hover {
-  background-color: #f5e9ff; 
+  background-color: #f5e9ff;
 }
 
 .table td {
@@ -134,28 +146,92 @@ body {
   border-radius: 2px;
   cursor: pointer;
 }
+.remove-btn {
+  background-color: crimson;
+}
+.block-btn{
+  background-color: yellowgreen;
+}
 .noEmployees {
-  font-size: 1.1em;
+  font-size: 2.4rem;
   color: var(--deep-purple);
   text-align: center;
   margin-top: 20px;
 }
-@media screen and (max-width: 1300px) {
-  .container{
+@media screen and (max-width: 900px) {
+  .container {
     height: auto;
   }
   .home {
     grid-template-columns: 1fr;
   }
- 
 }
-@media screen and (max-width: 900px) {
-  .home {
-    grid-template-columns: 1fr;
-  }
+@media screen and (max-width: 450px) {
   .table {
-   width: 900px;
+    width: 450px;
   }
 }
 
-/* ========= End Home ========== */
+
+
+/* Employee Details */
+.employee-details-card {
+  background-color: var(--white);
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--light-purple);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.employee-name {
+  font-size: 2em;
+  font-weight: bold;
+  color: var(--deep-purple);
+  margin-bottom: 20px;
+}
+
+.employee-info {
+  margin-bottom: 15px;
+}
+
+.employee-info label {
+  font-size: 1.1em;
+  color: var(--deep-purple);
+  font-weight: 600;
+  margin-bottom: 5px;
+  display: block;
+  text-align: left;
+}
+
+.employee-info input {
+  padding: 0.7rem;
+  width: 100%;
+  margin-top: 5px;
+  border: 1px solid var(--light-purple);
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.3s ease;
+  margin-bottom: 6px;
+}
+
+.employee-info input:focus {
+  border-color: var(--deep-purple);
+}
+
+.employee-info input:disabled {
+  background-color: #f0f0f0;
+}
+
+.backButton {
+  padding: 0.8rem;
+  background-color: var(--deep-purple);
+  color: var(--white);
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
