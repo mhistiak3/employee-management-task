@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const AddEmploye = ({ addEmplyoee }) => {
+const AddEmploye = ({ addEmployee  }) => {
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
   const [email, setEmail] = useState("");
@@ -16,7 +16,7 @@ const AddEmploye = ({ addEmplyoee }) => {
       phone: phone,
       block: false,
     }
-    addEmplyoee(employee);
+    addEmployee (employee);
     setFname("");
     setLname("");
     setEmail("");

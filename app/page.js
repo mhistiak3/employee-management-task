@@ -12,7 +12,7 @@ export default function Home() {
   console.log(employees);
 
   // add employee
-  const addEmplyoee = async (employee) => {
+  const addEmployee  = async (employee) => {
     try {
       setLoading(true);
       const response = await axiosInstance.post("/", {
@@ -130,7 +130,7 @@ export default function Home() {
         />
       ) : (
         <div className="home">
-          <AddEmploye addEmplyoee={addEmplyoee} />
+          <AddEmploye addEmployee ={addEmployee } />
           {loading ? (
             <div className="loader">
               <h2>Loading...</h2>
