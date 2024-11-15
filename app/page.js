@@ -8,14 +8,15 @@ import { useEffect, useState } from "react";
 export default function Home() {
   const [employees, setEmployees] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [loadingAction, setLoadingAction] = useState(false);
   const [selectedEmployee, setSelectedEmployee] = useState(null);
   console.log(employees);
 
   // add employee
-  const addEmployee  = async (employee) => {
+  const addEmployee = async (employee) => {
     try {
-      setLoading(true);
-      const response = await axiosInstance.post("/", {
+      setLoadingAction(true);
+      const response = await axiosInstance.post("users/", {
         name: employee.firstName,
         email: employee.email,
         phone: employee.phone,
@@ -27,14 +28,14 @@ export default function Home() {
     } catch (error) {
       console.error("Error adding employee:", error);
     } finally {
-      setLoading(false);
+      setLoadingAction(false);
     }
   };
 
   // fetch employees
   const fetchEmployees = async () => {
     try {
-      const response = await axiosInstance.get("/");
+      const response = await axiosInstance.get("users/");
       console.log(response.data);
       const employe = {
         id: 1,
@@ -55,36 +56,42 @@ export default function Home() {
   // show employee
   const showEmployeDetails = async (id) => {
     try {
-      setLoading(true);
+      const isBlocked = employees.find((employee) => employee.id === id).block;
+      if (isBlocked) {
+        return alert("This employee is blocked, if you want to see it please unblock it");
+      }
+      setLoadingAction(true);
       // in real life this shuld be valid id but now i use random id
-      const response = await axiosInstance.get(`/${5}`);
+      const response = await axiosInstance.get(`users/${5}`);
       console.log(response.data);
       setSelectedEmployee(employees.find((employee) => employee.id === id));
     } catch (error) {
       console.error("Error fetching employees:", error);
     } finally {
-      setLoading(false);
+      setLoadingAction(false);
     }
   };
 
   // remove employee
   const removeEmployee = async (id) => {
     try {
-      setLoading(true);
-      await axiosInstance.delete(`/${1}`);
+      setLoadingAction(true);
+      await axiosInstance.delete(`users/${1}`);
       setEmployees(employees.filter((employee) => employee.id !== id));
     } catch (error) {
       console.error("Error deleting employee:", error);
     } finally {
-      setLoading(false);
+      setLoadingAction(false);
     }
   };
 
   // block and unblock
   const blockAndUnblock = async (id) => {
     try {
-      setLoading(true);
-      await axiosInstance.patch(`/${3}`);
+      setLoadingAction(true);
+      await axiosInstance.put(`users/${3}`, {
+        block: !employees.find((employee) => employee.id === id).block,
+      });
       setEmployees(
         employees.map((employee) =>
           employee.id === id
@@ -95,15 +102,15 @@ export default function Home() {
     } catch (error) {
       console.error("Error deleting employee:", error);
     } finally {
-      setLoading(false);
+      setLoadingAction(false);
     }
   };
 
   // update employee
   const updateEmployee = async (employee) => {
     try {
-      setLoading(true);
-      await axiosInstance.put(`/${8}`, {
+      setLoadingAction(true);
+      await axiosInstance.put(`users/${8}`, {
         name: employee.firstName,
         email: employee.email,
         phone: employee.phone,
@@ -114,7 +121,7 @@ export default function Home() {
     } catch (error) {
       console.error("Error updating employee:", error);
     } finally {
-      setLoading(false);
+      setLoadingAction(false);
     }
   };
   useEffect(() => {
@@ -122,7 +129,7 @@ export default function Home() {
   }, []);
   return (
     <div className="main">
-      {selectedEmployee?.id ? (
+      {selectedEmployee && selectedEmployee?.id ? (
         <EmployeeDetails
           employee={selectedEmployee}
           setSelectedEmployee={setSelectedEmployee}
@@ -130,7 +137,7 @@ export default function Home() {
         />
       ) : (
         <div className="home">
-          <AddEmploye addEmployee ={addEmployee } />
+          <AddEmploye addEmployee={addEmployee} />
           {loading ? (
             <div className="loader">
               <h2>Loading...</h2>
@@ -141,6 +148,7 @@ export default function Home() {
               removeEmployee={removeEmployee}
               showEmployeDetails={showEmployeDetails}
               blockAndUnblock={blockAndUnblock}
+              loadingAction={loadingAction}
             />
           )}
         </div>

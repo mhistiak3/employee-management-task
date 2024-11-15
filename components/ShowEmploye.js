@@ -3,11 +3,16 @@ const ShowEmploye = ({
   removeEmployee,
   showEmployeDetails,
   blockAndUnblock,
+  loadingAction,
 }) => {
   return (
     <div className="tableSection">
       <h2>Employee List</h2>
-      {employees.length > 0 ? (
+      {loadingAction ? (
+        <div className="loader">
+          <h2>Loading...</h2>
+        </div>
+      ) : employees.length > 0 ? (
         <table className="table">
           <thead>
             <tr>
@@ -15,6 +20,7 @@ const ShowEmploye = ({
               <th>Options</th>
             </tr>
           </thead>
+
           <tbody>
             {employees.map((employee, index) => (
               <tr key={index}>
@@ -37,7 +43,6 @@ const ShowEmploye = ({
                     {employee.block ? "Unblock" : "Block"}
                   </button>
 
-             
                   <button
                     className="options-btn remove-btn"
                     onClick={() => removeEmployee(employee.id)}
