@@ -37,7 +37,9 @@ const ShowEmploye = ({
                   </button>
 
                   <button
-                    className="options-btn block-btn"
+                    className={
+                      "options-btn " + (employee.block ? "block-btn" : "")
+                    }
                     onClick={() => blockAndUnblock(employee.id)}
                   >
                     {employee.block ? "Unblock" : "Block"}
