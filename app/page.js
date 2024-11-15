@@ -39,9 +39,9 @@ export default function Home() {
       console.log(response.data);
       const employe = {
         id: 1,
-        firstName: "John",
-        lastName: "Doe",
-        email: "gY7n8@example.com",
+        firstName: "Asad",
+        lastName: "Mahmood",
+        email: "asad@mahmood.com",
         phone: "123-456-7890",
         block: false,
       };
