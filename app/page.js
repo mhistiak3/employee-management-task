@@ -124,6 +124,7 @@ export default function Home() {
       setLoadingAction(false);
     }
   };
+  
   useEffect(() => {
     fetchEmployees();
   }, []);
